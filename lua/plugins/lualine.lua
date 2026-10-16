@@ -13,7 +13,7 @@ return {
       pine = "#31748f",
       gold = "#f6c177",
       foam = "#9ccfd8",
-      iris = "#c4a7e7",
+      iris = "#31748f",
       rose = "#ebbcba",
     }
 
