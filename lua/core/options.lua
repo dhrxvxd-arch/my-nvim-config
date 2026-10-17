@@ -1,9 +1,17 @@
 local opt = vim.opt
 
-opt.guifont = "CaskaydiaMono Nerd Font:h11"
+local font = {
+  "Iosevka Nerd Font:h12",
+  "CaskaydiaMono Nerd Font:h12",
+  "JetBrainsMono Nerd Font:h12",
+  "Ubuntu Mono:h14",
+}
+
+opt.guifont = font[1]
 opt.number = true
 opt.relativenumber = true
 opt.signcolumn = "yes"
+vim.opt.fillchars = { eob = " " }
 
 opt.tabstop = 2
 opt.shiftwidth = 2
@@ -45,9 +53,19 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 vim.opt.cursorline = false
-vim.opt.cursorlineopt = "line"
 
-vim.api.nvim_set_hl(0, "CursorLine", {
-  underline = true,
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "neo-tree",
+  callback = function()
+    vim.opt_local.cursorline = false
+  end,
+})
+
+vim.api.nvim_create_autocmd({ "FileType", "WinEnter" }, {
+  callback = function()
+    if vim.bo.filetype == "neo-tree" then
+      vim.opt_local.cursorline = false
+    end
+  end,
 })
 

@@ -1,6 +1,6 @@
 
 function ColorMyPencils()
-  color = "rose-pine-moon"
+  local color = "rose-pine-moon"
   vim.cmd.colorscheme(color)
 
   if not vim.g.neovide then
@@ -85,8 +85,11 @@ local function create_floating_window(opts)
     col = col,
     row = row,
     style = "minimal",
-    border = "rounded",
+    border = "none",
   })
+
+  vim.api.nvim_set_hl(0, "FloatShadow", { blend = 100 })
+  vim.api.nvim_set_hl(0, "FloatShadowThrough", { blend = 100 })
 
   return {
     buf = buf,
