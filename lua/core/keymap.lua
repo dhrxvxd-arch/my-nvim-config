@@ -2,10 +2,23 @@ local set = vim.keymap.set
 
 set("n", "\\", "<cmd>noh<cr>", { desc = "Clear search highlights" })
 
+set("n", "<leader>co", "<cmd>Compile<cr>", { desc = "Compile project" })
+set("n", "<leader>ro", "<cmd>Recompile<cr>", { desc = "Recompile project" })
+set("n", "<c-s>", "<cmd>wa<cr>", { desc = "Save unsaved files" })
+
+set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Find files" })
+set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Live grep" })
+
+set({ "n", "v" }, "<C-S-v>", '"+p', { desc = "Paste from clipboard" })
+set("i", "<C-S-v>", '<C-r>+', { desc = "Paste from clipboard" })
+set("t", "<C-S-v>", [[<C-\><C-n>"+pa]], { desc = "Paste from clipboard" })
+
 set("n", "<leader>h", "<C-w>h", { desc = "Move to left window" })
 set("n", "<leader>j", "<C-w>j", { desc = "Move to lower window" })
 set("n", "<leader>k", "<C-w>k", { desc = "Move to upper window" })
 set("n", "<leader>l", "<C-w>l", { desc = "Move to right window" })
+
+set("n", "-", "<cmd>Oil<cr>", { desc = "Oil file manager" })
 
 set({ "n", "t" }, "<c-t>", "<cmd>FloaTerminal<cr>", { desc = "Toggle floating terminal" })
 set("n", "<c-s>", "<cmd>ScratchPad<cr>", { desc = "Toggle scratchpad" })
