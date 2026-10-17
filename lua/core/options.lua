@@ -1,7 +1,6 @@
 local opt = vim.opt
 
-vim.opt.guifont = "Iosevka Term:h11"
-
+opt.guifont = "CaskaydiaMono Nerd Font:h11"
 opt.number = true
 opt.relativenumber = true
 opt.signcolumn = "yes"
