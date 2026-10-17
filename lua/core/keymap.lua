@@ -20,11 +20,19 @@ for i = 1, 9 do
 end
 
 if vim.g.neovide then
-  set("n", "<leader>+", function()
+  set("n", "<leader>=", function()
     vim.g.neovide_scale_factor = math.min(vim.g.neovide_scale_factor + 0.1, 2.0)
   end, { desc = "Increase GUI scale" })
 
   set("n", "<leader>-", function()
+    vim.g.neovide_scale_factor = math.max(vim.g.neovide_scale_factor - 0.1, 0.5)
+  end, { desc = "Decrease GUI scale" })
+
+  set("n", "<C-=>", function()
+    vim.g.neovide_scale_factor = math.min(vim.g.neovide_scale_factor + 0.1, 2.0)
+  end, { desc = "Increase GUI scale" })
+
+  set("n", "<C-->", function()
     vim.g.neovide_scale_factor = math.max(vim.g.neovide_scale_factor - 0.1, 0.5)
   end, { desc = "Decrease GUI scale" })
 end
