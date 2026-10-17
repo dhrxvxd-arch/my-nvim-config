@@ -704,5 +704,3 @@ Always check the active mapping if behavior does not match this document:
 
 ---
 
-*This document describes the intended behavior of the listed plugins and the known mappings. Plugin-specific defaults and optional mappings should be verified against the actual Lua files whenever the configuration changes.*
-

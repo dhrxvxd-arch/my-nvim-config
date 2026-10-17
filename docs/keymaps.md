@@ -172,5 +172,3 @@ The `:verbose` commands help identify where a mapping was last defined.
 
 ---
 
-*This reference reflects the supplied configuration and the additional Harpoon and Markdown Preview bindings discussed. Plugin commands require their respective plugins to be installed and configured.*
-
