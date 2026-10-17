@@ -501,6 +501,43 @@ If transparency is configured, ensure it is intentional for each UI. For example
 
 ---
 
+## Markdown Preview
+
+**Repository:** [sammaji/markdown-preview.nvim](https://github.com/sammaji/markdown-preview.nvim)  
+**Purpose:** Live browser-based Markdown rendering with mathematical typesetting and diagram support.
+
+| Feature | Description |
+|---|---|
+| Live preview | Render Markdown in a browser |
+| LaTeX mathematics | Render supported equations using KaTeX |
+| Mermaid | Render flowcharts and diagrams |
+| PlantUML / Graphviz | Render supported technical diagrams |
+| Code blocks | Syntax-highlighted code |
+| Tables | Render Markdown tables |
+| Footnotes | Render supported footnotes |
+| Task lists | Display checkboxes |
+| Themes | Customize preview appearance |
+| Images | Display local Markdown images |
+
+### Keybindings
+
+| Keybind | Action |
+|---|---|
+| `<leader>mp` | Start preview |
+| `<leader>mP` | Stop preview |
+| `<leader>mr` | Refresh preview |
+
+**Configuration:** `lua/plugins/markdown-preview.lua`  
+**Keymaps:** `lua/core/keymap.lua`  
+**Filetype:** `markdown`
+
+**Notes:**
+- Preview opens in a browser, independently of Neovim's editing window.
+- KaTeX supports a large subset of LaTeX math syntax, not every LaTeX package or document command.
+- Use a full LaTeX compiler such as `latexmk` for complete `.tex` documents, bibliographies, and package-dependent workflows.
+
+---
+
 ## Harpoon
 
 **Repository:** [ThePrimeagen/harpoon](https://github.com/ThePrimeagen/harpoon)  

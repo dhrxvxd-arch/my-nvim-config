@@ -25,6 +25,31 @@
 | `<leader>ff` | Normal | Find files | Open Telescope's file finder. |
 | `<leader>fg` | Normal | Live grep | Search text across project files. |
 
+## Harpoon
+
+| Keybinding | Mode | Action | Usage |
+|---|---|---|---|
+| `<leader>ha` | Normal | Add file | Add the current file to the Harpoon list. |
+| `<leader>hh` | Normal | Toggle quick menu | Open the Harpoon menu to view and manage bookmarked files. |
+| `<leader>1` | Normal | Select Harpoon file 1 | Jump to the first bookmarked file. |
+| `<leader>2` | Normal | Select Harpoon file 2 | Jump to the second bookmarked file. |
+| `<leader>3` | Normal | Select Harpoon file 3 | Jump to the third bookmarked file. |
+| `<leader>4` | Normal | Select Harpoon file 4 | Jump to the fourth bookmarked file. |
+
+**Note:** Harpoon's numbered mappings may conflict with the BufferLine mappings in the Windows and Buffers section. Both plugins cannot independently own the same key combination in the same mode; whichever mapping is defined last takes precedence.
+
+## Markdown Preview
+
+| Keybinding | Mode | Action | Usage |
+|---|---|---|---|
+| `<leader>mp` | Normal | Start Markdown preview | Open the rendered Markdown document in a browser. |
+| `<leader>mP` | Normal | Stop Markdown preview | Stop the running preview server. |
+| `<leader>mr` | Normal | Refresh Markdown preview | Refresh the rendered document. |
+
+**Features:** Live Markdown rendering, KaTeX mathematics, Mermaid diagrams, supported PlantUML and Graphviz diagrams, syntax-highlighted code, tables, footnotes, task lists, and images.
+
+**Note:** LaTeX rendering covers the supported KaTeX subset. Full `.tex` documents requiring arbitrary packages, bibliographies, or document-level features need a LaTeX compiler.
+
 ## Compilation
 
 | Keybinding | Mode | Action | Usage |
@@ -46,7 +71,7 @@
 | `<Tab>` | Normal | Next buffer | Alternative next-buffer shortcut. |
 | `<S-Tab>` | Normal | Previous buffer | Alternative previous-buffer shortcut. |
 | `<C-w>` | Normal | Delete buffer | Run `:bdelete` on the current buffer. |
-| `<leader>1`–`<leader>9` | Normal | Select buffer | Jump to the corresponding BufferLine buffer position. |
+| `<leader>1`–`<leader>9` | Normal | Select buffer | Jump to the corresponding BufferLine buffer position, if these mappings are active. |
 
 ## Terminal
 
@@ -123,6 +148,7 @@
 | `<leader>c` and `<leader>co` | Both compile. | Keep both only if you want aliases. |
 | `<C-S-v>` | Clipboard mappings are duplicated in the supplied configuration. | Remove the duplicate definitions. |
 | `<leader>co` and `<leader>cO` | Compile and outgoing-call mappings differ by case. | Use lowercase `o` for compilation and uppercase `O` for outgoing calls. |
+| `<leader>1`–`<leader>4` | Harpoon and BufferLine mappings overlap. | Choose which plugin owns the number mappings, or move one plugin to different keys. |
 | `<leader>f` | Formatting depends on LSP support. | Check server formatting support if nothing happens. |
 | LSP mappings | Require an attached server. | Check `:checkhealth vim.lsp` if mappings have no effect. |
 
@@ -138,10 +164,13 @@ Run these commands inside Neovim:
 :verbose nmap <C-s>
 :verbose nmap <leader>co
 :verbose nmap <leader>cO
+:verbose nmap <leader>1
+:verbose nmap <leader>mp
 ```
 
 The `:verbose` commands help identify where a mapping was last defined.
 
 ---
 
-*This reference reflects the supplied configuration and the additional LSP bindings discussed. Plugin commands require their respective plugins to be installed and configured.*
+*This reference reflects the supplied configuration and the additional Harpoon and Markdown Preview bindings discussed. Plugin commands require their respective plugins to be installed and configured.*
+
