@@ -6,6 +6,16 @@ set("n", "<leader>co", "<cmd>Compile<cr>", { desc = "Compile project" })
 set("n", "<leader>ro", "<cmd>Recompile<cr>", { desc = "Recompile project" })
 set("n", "<c-s>", "<cmd>wa<cr>", { desc = "Save unsaved files" })
 
+
+set("n", "<leader>mp", "<cmd>MarkdownPreview<CR>",
+    { desc = "Markdown: Preview" })
+
+set("n", "<leader>mP", "<cmd>MarkdownPreviewStop<CR>",
+    { desc = "Markdown: Stop preview" })
+
+set("n", "<leader>mr", "<cmd>MarkdownPreviewRefresh<CR>",
+    { desc = "Markdown: Refresh preview" })
+
 set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Find files" })
 set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>", { desc = "Live grep" })
 
