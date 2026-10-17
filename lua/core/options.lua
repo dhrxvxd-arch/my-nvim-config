@@ -21,7 +21,6 @@ opt.incsearch = true
 opt.hlsearch = true
 
 opt.termguicolors = true
-opt.cursorline = true
 opt.showmatch = true
 
 opt.splitbelow = true
@@ -45,7 +44,7 @@ opt.hidden = true
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-vim.opt.cursorline = true
+vim.opt.cursorline = false
 vim.opt.cursorlineopt = "line"
 
 vim.api.nvim_set_hl(0, "CursorLine", {

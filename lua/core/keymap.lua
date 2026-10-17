@@ -7,8 +7,10 @@ set("n", "<leader>j", "<C-w>j", { desc = "Move to lower window" })
 set("n", "<leader>k", "<C-w>k", { desc = "Move to upper window" })
 set("n", "<leader>l", "<C-w>l", { desc = "Move to right window" })
 
-set({ "n", "t" }, "<c-t>", "<cmd>Floaterminal<cr>", { desc = "Toggle floating terminal" })
-set("n", "<c-s>", "<cmd>Scratchpad<cr>", { desc = "Toggle scratchpad" })
+set({ "n", "t" }, "<c-t>", "<cmd>FloaTerminal<cr>", { desc = "Toggle floating terminal" })
+set("n", "<c-s>", "<cmd>ScratchPad<cr>", { desc = "Toggle scratchpad" })
+
+set("n", "<leader>c", "<cmd>Compile<cr>", { desc = "Compile Mode" })
 
 set("n", "<C-Tab>", "<cmd>bnext<cr>", { desc = "Next buffer" })
 set("n", "<C-S-Tab>", "<cmd>bprevious<cr>", { desc = "Previous buffer" })
