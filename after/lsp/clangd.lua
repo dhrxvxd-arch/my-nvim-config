@@ -7,6 +7,7 @@ return {
     "--completion-style=detailed",
     "--header-insertion=iwyu",
   },
+  filetypes = { "c", "cpp", "objc", "objcpp" },
 
   init_options = {
     clangdFileStatus = true,
