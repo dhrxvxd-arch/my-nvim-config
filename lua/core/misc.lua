@@ -1,53 +1,57 @@
 
 function ColorMyPencils()
-  local color = "rose-pine-moon"
-  vim.cmd.colorscheme(color)
+  vim.cmd.colorscheme("rose-pine-moon")
 
-  if not vim.g.neovide then
-    local transparent_groups = {
-      "Normal",
-      "NormalNC",
-      "NormalFloat",
-      "FloatBorder",
-      "SignColumn",
-      "EndOfBuffer",
-      "LineNr",
-      "FoldColumn",
-      "StatusLine",
-      "StatusLineNC",
-      "TabLine",
-      "TabLineFill",
-      "TabLineSel",
-      "WinSeparator",
-      "NeoTreeNormal",
-      "NeoTreeNormalNC",
-    }
+  local bg = vim.g.neovide and "#1d2021" or "none"
 
-    for _, group in ipairs(transparent_groups) do
-      vim.api.nvim_set_hl(0, group, { bg = "none" })
-    end
+  local groups = {
+    "Normal",
+    "NormalNC",
+    "NormalFloat",
+    "FloatBorder",
+    "FloatTitle",
+    "SignColumn",
+    "EndOfBuffer",
+    "LineNr",
+    "FoldColumn",
+    "StatusLine",
+    "StatusLineNC",
+    "WinBar",
+    "WinBarNC",
+    "TabLine",
+    "TabLineFill",
+    "TabLineSel",
+    "WinSeparator",
+    "MsgArea",
+    "Pmenu",
+    "PmenuSbar",
+    "PmenuThumb",
+    "NeoTreeNormal",
+    "NeoTreeNormalNC",
+    "TelescopeNormal",
+    "TelescopeBorder",
+    "NoiceCmdline",
+    "NoiceCmdlinePopup",
+    "NotifyBackground",
+  }
 
-    vim.opt.cursorline = true
-    vim.api.nvim_set_hl(0, "CursorLine", {
-      bg = "#363347",
-    })
-    vim.api.nvim_set_hl(0, "CursorLineNr", {
-      link = "LineNr",
-    })
-  else
-    local groups = {
-      "Normal",
-      "NormalNC",
-      "NormalFloat",
-      "SignColumn",
-      "EndOfBuffer",
-      "NeoTreeNormal",
-      "NeoTreeNormalNC",
-    }
+  for _, group in ipairs(groups) do
+    vim.api.nvim_set_hl(0, group, { bg = bg })
+  end
 
-    for _, group in ipairs(groups) do
-      vim.api.nvim_set_hl(0, group, { bg = "#1d2021" })
-    end
+  vim.opt.cursorline = true
+
+  vim.api.nvim_set_hl(0, "CursorLine", {
+    bg = vim.g.neovide and "#26233a" or "#363347",
+  })
+
+  vim.api.nvim_set_hl(0, "CursorLineNr", {
+    link = "LineNr",
+  })
+
+  if vim.g.neovide then
+    vim.g.neovide_opacity = 1.0
+    vim.g.neovide_normal_opacity = 1.0
   end
 end
 
