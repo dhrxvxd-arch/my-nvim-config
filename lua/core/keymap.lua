@@ -130,6 +130,10 @@ set("n", "<leader>hh", function()
     harpoon.ui:toggle_quick_menu(harpoon:list())
 end, { desc = "Harpoon: Quick menu" })
 
+set("n", "<c-h>", function()
+    harpoon.ui:toggle_quick_menu(harpoon:list())
+end, { desc = "Harpoon: Quick menu" })
+
 for i = 1, 4 do
   set("n", "<leader>" .. i, function()
     harpoon:list():select(i)
