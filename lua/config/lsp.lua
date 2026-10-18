@@ -38,5 +38,6 @@ vim.lsp.enable({
   "clangd",
   "zls",
   "rust_analyzer",
+  "gopls",
 })
 

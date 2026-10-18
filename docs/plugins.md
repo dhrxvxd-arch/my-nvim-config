@@ -1,3 +1,4 @@
+
 # Neovim Plugins — Complete Reference
 
 A practical reference for my Neovim configuration using `lazy.nvim`.
@@ -5,20 +6,24 @@ A practical reference for my Neovim configuration using `lazy.nvim`.
 ## Table of Contents
 
 1. [Plugin Overview](#plugin-overview)
-2. [Autopairs](#autopairs)
-3. [Bufferline](#bufferline)
-4. [Compile Mode](#compile-mode)
-5. [Dashboard](#dashboard)
-6. [Indent Scope](#indent-scope)
-7. [LSP](#lsp)
-8. [Lualine](#lualine)
-9. [Neo-tree](#neo-tree)
-10. [Noice](#noice)
-11. [Oil](#oil)
-12. [Rosé Pine](#rosé-pine)
-13. [Telescope](#telescope)
-14. [Which-key](#which-key)
-15. [Plugin Management](#plugin-management)
+2. [Treesitter](#treesitter)
+3. [Autopairs](#autopairs)
+4. [Bufferline](#bufferline)
+5. [Compile Mode](#compile-mode)
+6. [Dashboard](#dashboard)
+7. [Indent Scope](#indent-scope)
+8. [LSP](#lsp)
+9. [Lualine](#lualine)
+10. [Neo-tree](#neo-tree)
+11. [Noice](#noice)
+12. [Oil](#oil)
+13. [Rosé Pine](#rosé-pine)
+14. [Markdown Preview](#markdown-preview)
+15. [Harpoon](#harpoon)
+16. [Telescope](#telescope)
+17. [Which-key](#which-key)
+18. [Plugin Management](#plugin-management)
+19. [Important Keybinding Notes](#important-keybinding-notes)
 
 ---
 
@@ -37,8 +42,47 @@ A practical reference for my Neovim configuration using `lazy.nvim`.
 | `noice.nvim` | Enhanced messages, command line and notifications | Improve Neovim's UI |
 | `oil.nvim` | Edit directories like a buffer | Fast filesystem operations |
 | `rose-pine` | Colorscheme | Rosé Pine visual theme |
+| `nvim-treesitter` | Syntax parsing and highlighting | Syntax-aware highlighting, folding and indentation |
+| `markdown-preview.nvim` | Browser-based Markdown preview | Preview Markdown, equations and diagrams |
+| `harpoon` | File bookmarking and quick navigation | Switch quickly between frequently used files |
 | `telescope.nvim` | Fuzzy finder | Find files, text and other project information |
 | `which-key.nvim` | Keybinding discovery | See available mappings |
+
+---
+
+## Treesitter
+
+**Repository:** [`nvim-treesitter/nvim-treesitter`](https://github.com/nvim-treesitter/nvim-treesitter)
+
+**Purpose:** Modern syntax parsing, highlighting, code folding, and indentation.
+
+| Feature | Description |
+|---|---|
+| C parser | Syntax highlighting and parsing for C source files |
+| C++ parser | Syntax highlighting and parsing for C++ source files |
+| Zig parser | Syntax highlighting and parsing for Zig source files |
+| Rust parser | Syntax highlighting and parsing for Rust source files |
+| Go parser | Syntax highlighting and parsing for Go source files |
+| Syntax highlighting | Provides syntax-aware highlighting through Tree-sitter |
+| Code folding | Uses Tree-sitter expressions for folding code |
+| Indentation | Uses the Tree-sitter indentation expression |
+| Parser management | Installs and updates parsers through `:TSInstall` and `:TSUpdate` |
+
+### Commands
+
+| Command | Usage |
+|---|---|
+| `:TSInstall c cpp zig rust go` | Install language parsers |
+| `:TSUpdate` | Update installed parsers |
+| `:checkhealth nvim-treesitter` | Diagnose Tree-sitter configuration |
+
+### Notes
+
+- Configured in `lua/plugins/treesitter.lua` using Lazy.nvim.
+- Uses the `main` branch and requires Neovim 0.12 or newer.
+- Tree-sitter handles syntax parsing and highlighting; LSP servers provide completion, diagnostics, and navigation.
+- Language servers are configured separately under `after/lsp/`.
+- Tree-sitter indentation is experimental; disable its `indentexpr` assignment if it conflicts with your preferred indentation settings.
 
 ---
 
@@ -63,7 +107,7 @@ A practical reference for my Neovim configuration using `lazy.nvim`.
 
 ### Configuration
 
-Usually configured in `plugins/autopairs.lua`.
+Usually configured in `lua/plugins/autopairs.lua`.
 
 Common options include:
 
@@ -173,7 +217,7 @@ For newer Compile Mode versions, use the current `ansi_color` configuration rath
 
 The dashboard is generally shown when opening Neovim without a file or when the configured startup conditions are met.
 
-The exact shortcuts depend on the buttons defined in `plugins/dashboard.lua`.
+The exact shortcuts depend on the buttons defined in `lua/plugins/dashboard.lua`.
 
 ### Configuration ideas
 
@@ -212,7 +256,7 @@ int main() {
 
 No keybinding is necessarily required. The plugin provides visual guidance while moving through code.
 
-**Configuration note:** Indentation guides and scope highlighting may come from separate plugins or modules. The exact plugin name and behavior depend on the implementation in `plugins/indentscope.lua`.
+**Configuration note:** Indentation guides and scope highlighting may come from separate plugins or modules. The exact plugin name and behavior depend on the implementation in `lua/plugins/indentscope.lua`.
 
 ---
 
@@ -287,14 +331,13 @@ Call hierarchy support depends on the language server and its capabilities.
 
 ### Language-server support
 
-The configured servers may include:
-
 | Language | Server |
 |---|---|
 | C / C++ | `clangd` |
 | Lua | `lua_ls` |
 | Rust | `rust_analyzer` |
 | Zig | `zls` |
+| Go | `gopls` |
 
 Actual availability depends on which servers are installed and enabled.
 
@@ -503,7 +546,8 @@ If transparency is configured, ensure it is intentional for each UI. For example
 
 ## Markdown Preview
 
-**Repository:** [sammaji/markdown-preview.nvim](https://github.com/sammaji/markdown-preview.nvim)  
+**Repository:** [`sammaji/markdown-preview.nvim`](https://github.com/sammaji/markdown-preview.nvim)
+
 **Purpose:** Live browser-based Markdown rendering with mathematical typesetting and diagram support.
 
 | Feature | Description |
@@ -531,7 +575,8 @@ If transparency is configured, ensure it is intentional for each UI. For example
 **Keymaps:** `lua/core/keymap.lua`  
 **Filetype:** `markdown`
 
-**Notes:**
+### Notes
+
 - Preview opens in a browser, independently of Neovim's editing window.
 - KaTeX supports a large subset of LaTeX math syntax, not every LaTeX package or document command.
 - Use a full LaTeX compiler such as `latexmk` for complete `.tex` documents, bibliographies, and package-dependent workflows.
@@ -540,8 +585,9 @@ If transparency is configured, ensure it is intentional for each UI. For example
 
 ## Harpoon
 
-**Repository:** [ThePrimeagen/harpoon](https://github.com/ThePrimeagen/harpoon)  
-**Branch:** `harpoon2`  
+**Repository:** [`ThePrimeagen/harpoon`](https://github.com/ThePrimeagen/harpoon)  
+**Branch:** `harpoon2`
+
 **Purpose:** Quickly bookmark and switch between frequently used files without repeatedly searching through the project.
 
 ### Keybindings
@@ -700,7 +746,5 @@ Always check the active mapping if behavior does not match this document:
 :verbose nmap -
 ```
 
-` :verbose nmap ` shows the active normal-mode mapping and, when available, where it was last defined.
-
----
+`:verbose nmap` shows the active normal-mode mapping and, when available, where it was last defined.
 
