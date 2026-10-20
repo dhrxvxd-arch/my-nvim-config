@@ -21,14 +21,20 @@ return {
 		}
 
 		dashboard.section.buttons.val = {
-			dashboard.button("f", "󰈞  Find file", ":Telescope find_files<CR>"),
-			dashboard.button("r", "  Recent", ":Telescope oldfiles<CR>"),
-      dashboard.button("p", "  Open Project", ":OpenProject<CR>"),
-			dashboard.button("c", "  Open Config", ":Neotree dir=~/.config/nvim/<CR>"),
-			dashboard.button("q", "󰅚  Quit", ":qa<CR>"),
+			dashboard.button("f", "󰈞  Find File", "<cmd>Telescope find_files<CR>"),
+			dashboard.button("g", "󰱼  Live Grep", "<cmd>Telescope live_grep<CR>"),
+			dashboard.button("r", "  Recent Files", "<cmd>Telescope oldfiles<CR>"),
+			dashboard.button("p", "  Open Project", "<cmd>OpenProject<CR>"),
+			dashboard.button("c", "  Neovim Config", "<cmd>Neotree dir=~/.config/nvim/<CR>"),
+			dashboard.button("l", "󰒲  Lazy.nvim", "<cmd>Lazy<CR>"),
+			dashboard.button("q", "󰅚  Quit", "<cmd>qa<CR>"),
 		}
 
-		dashboard.section.footer.val = "i use arch btw"
+		dashboard.section.footer.val = function()
+			return "i use arch btw"
+		end
+
+		dashboard.config.opts.noautocmd = true
 
 		alpha.setup(dashboard.opts)
 	end,
