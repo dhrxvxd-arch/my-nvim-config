@@ -128,21 +128,39 @@ local function toggle_scratchpad()
 end
 
 local function open_project()
-  local path = vim.fn.input("Open project: ", "", "dir")
+  require("telescope.builtin").find_files({
+    prompt_title = "Open Project",
+    cwd = vim.fn.expand("~/dev"),
+    find_command = {
+      "find",
+      ".",
+      "-mindepth", "1",
+      "-maxdepth", "1",
+      "-type", "d",
+    },
+    attach_mappings = function(prompt_bufnr, map)
+      local actions = require("telescope.actions")
+      local action_state = require("telescope.actions.state")
 
-  if path == "" then
-    return
-  end
+      local function select_dir()
+        local selection = action_state.get_selected_entry()
+        if not selection then
+          return
+        end
 
-  path = vim.fn.expand(path)
+        actions.close(prompt_bufnr)
 
-  if vim.fn.isdirectory(path) == 0 then
-    vim.notify("Not a directory: " .. path, vim.log.levels.ERROR)
-    return
-  end
+        local path = vim.fn.expand("~/dev/" .. selection.value)
+        vim.cmd.cd(vim.fn.fnameescape(path))
+        vim.cmd("Neotree reveal")
+      end
 
-  vim.cmd("cd " .. vim.fn.fnameescape(path))
-  vim.cmd("Neotree reveal")
+      map("i", "<CR>", select_dir)
+      map("n", "<CR>", select_dir)
+
+      return true
+    end,
+  })
 end
 
 vim.api.nvim_create_user_command("OpenProject", open_project, {
