@@ -44,7 +44,8 @@ return {
 
     require("lualine").setup({
       options = {
-        theme = theme,
+        --theme = theme,
+        theme = "gruvbox",
         globalstatus = true,
       },
     })
