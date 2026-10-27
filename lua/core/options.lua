@@ -5,6 +5,8 @@ local font = {
   "CaskaydiaMono Nerd Font:h12",
   "JetBrainsMono Nerd Font:h12",
   "Ubuntu Mono:h14",
+  "monospace:h13",
+  "terminus:h12"
 }
 
 opt.guifont = font[1]
