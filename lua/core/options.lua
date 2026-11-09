@@ -53,6 +53,8 @@ opt.timeoutlen = 400
 opt.completeopt = { "menu", "menuone", "noselect" }
 opt.hidden = true
 
+opt.guicursor = "a:block"
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 

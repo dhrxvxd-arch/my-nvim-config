@@ -39,5 +39,9 @@ vim.lsp.enable({
   "zls",
   "rust_analyzer",
   "gopls",
+  "pyright",
+  "html",
+  "cssls",
+  "ts_ls",
 })
 

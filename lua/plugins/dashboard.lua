@@ -22,7 +22,6 @@ return {
 
 		dashboard.section.buttons.val = {
 			dashboard.button("f", "󰈞  Find File", "<cmd>Telescope find_files<CR>"),
-			dashboard.button("g", "󰱼  Live Grep", "<cmd>Telescope live_grep<CR>"),
 			dashboard.button("r", "  Recent Files", "<cmd>Telescope oldfiles<CR>"),
 			dashboard.button("p", "  Open Project", "<cmd>OpenProject<CR>"),
 			dashboard.button("c", "  Neovim Config", "<cmd>Neotree dir=~/.config/nvim/<CR>"),

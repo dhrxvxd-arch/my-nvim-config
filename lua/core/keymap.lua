@@ -6,6 +6,7 @@ set("n", "<leader>co", "<cmd>Compile<cr>", { desc = "Compile project" })
 set("n", "<leader>ro", "<cmd>Recompile<cr>", { desc = "Recompile project" })
 set("n", "<c-s>", "<cmd>wa<cr>", { desc = "Save unsaved files" })
 
+set("n", "<leader>zz", ":ZenMode<CR>", { desc = "Enable zen mode" })
 
 set("n", "<leader>mp", "<cmd>MarkdownPreview<CR>",
     { desc = "Markdown: Preview" })

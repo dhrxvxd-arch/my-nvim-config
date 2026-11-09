@@ -1,53 +1,32 @@
 
 return {
   "nvim-lualine/lualine.nvim",
-  enabled = false,
-  dependencies = { "nvim-tree/nvim-web-devicons" },
+  dependencies = { "echasnovski/mini.icons" },
   config = function()
-    local p = {
-      bg = "#1d2021",
-      surface = "#26233a",
-      overlay = "#403d52",
-      muted = "#6e6a86",
-      text = "#e0def4",
-      love = "#eb6f92",
-      pine = "#31748f",
-      gold = "#f6c177",
-      foam = "#9ccfd8",
-      iris = "#31748f",
-      rose = "#ebbcba",
-    }
-
-    local theme = {
-      normal = {
-        a = { fg = p.bg, bg = p.iris, gui = "bold" },
-        b = { fg = p.text, bg = p.surface },
-        c = { fg = p.text, bg = p.bg },
-      },
-      insert = {
-        a = { fg = p.bg, bg = p.pine, gui = "bold" },
-      },
-      visual = {
-        a = { fg = p.bg, bg = p.rose, gui = "bold" },
-      },
-      replace = {
-        a = { fg = p.bg, bg = p.love, gui = "bold" },
-      },
-      command = {
-        a = { fg = p.bg, bg = p.gold, gui = "bold" },
-      },
-      inactive = {
-        a = { fg = p.muted, bg = p.bg },
-        b = { fg = p.muted, bg = p.bg },
-        c = { fg = p.muted, bg = p.bg },
-      },
-    }
-
     require("lualine").setup({
       options = {
-        --theme = theme,
-        theme = "gruvbox",
-        globalstatus = true,
+        icons_enabled = false,
+        theme = "auto",
+        component_separators = "",
+        section_separators = "",
+      },
+
+      sections = {
+        lualine_a = { "mode" },
+        lualine_b = { "branch" },
+        lualine_c = { "filename" },
+        lualine_x = {
+          function()
+            local encoding = vim.o.fileencoding
+            if encoding == "" then
+              return vim.bo.fileformat .. " :: " .. vim.bo.filetype
+            else
+              return encoding .. " :: " .. vim.bo.fileformat .. " :: " .. vim.bo.filetype
+            end
+          end,
+        },
+        lualine_y = { "progress" },
+        lualine_z = { "location" },
       },
     })
   end,

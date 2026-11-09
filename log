@@ -1,0 +1,138 @@
+
+return {
+  cmd = {
+    "clangd",
+    "--background-index",
+    "--clang-tidy",
+    "--completion-style=detailed",
+    "--header-insertion=iwyu",
+  },
+  filetypes = { "c", "cpp", "objc", "objcpp" },
+
+  init_options = {
+    clangdFileStatus = true,
+  },
+}
+
+
+return {
+  settings = {
+    gopls = {
+      analyses = {
+        unusedparams = true,
+        unusedwrite = true,
+        useany = true,
+        shadow = true,
+      },
+
+      staticcheck = true,
+      gofumpt = true,
+
+      hints = {
+        assignVariableTypes = true,
+        compositeLiteralFields = true,
+        compositeLiteralTypes = true,
+        constantValues = true,
+        functionTypeParameters = true,
+        parameterNames = true,
+        rangeVariableTypes = true,
+      },
+
+      completeUnimported = true,
+      usePlaceholders = true,
+      semanticTokens = true,
+    },
+  },
+}
+
+
+return {
+  cmd = { "lua-language-server" },
+  filetypes = { "lua" },
+
+  settings = {
+    Lua = {
+      runtime = {
+        version = "LuaJIT",
+      },
+
+      diagnostics = {
+        globals = { "vim" },
+      },
+
+      workspace = {
+        checkThirdParty = false,
+        library = {
+          vim.env.VIMRUNTIME,
+        },
+      },
+
+      completion = {
+        callSnippet = "Replace",
+      },
+
+      telemetry = {
+        enable = false,
+      },
+    },
+  },
+}
+
+
+return {
+  settings = {
+    ["rust-analyzer"] = {
+      cargo = {
+        allFeatures = true,
+        buildScripts = {
+          enable = true,
+        },
+      },
+
+      check = {
+        command = "clippy",
+      },
+
+      procMacro = {
+        enable = true,
+      },
+
+      inlayHints = {
+        bindingModeHints = {
+          enable = true,
+        },
+        chainingHints = {
+          enable = true,
+        },
+        closingBraceHints = {
+          enable = true,
+        },
+        closureReturnTypeHints = {
+          enable = "always",
+        },
+        lifetimeElisionHints = {
+          enable = "skip_trivial",
+        },
+        parameterHints = {
+          enable = true,
+        },
+        typeHints = {
+          enable = true,
+        },
+      },
+    },
+  },
+}
+
+
+return {
+  settings = {
+    zls = {
+      enable_autofix = true,
+      enable_snippets = true,
+      warn_style = true,
+      semantic_tokens = "partial",
+    },
+  },
+}
+
