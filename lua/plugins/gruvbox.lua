@@ -1,6 +1,7 @@
 return {
   "ellisonleao/gruvbox.nvim",
   name = "gruvbox",
+  enabled = false,
   config = function()
     require("gruvbox").setup({
       transparent_mode = false,

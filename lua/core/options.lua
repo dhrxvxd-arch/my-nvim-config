@@ -15,6 +15,8 @@ opt.relativenumber = true
 opt.signcolumn = "yes"
 vim.opt.fillchars = { eob = " " }
 
+--vim.cmd("colorscheme dosbox-black")
+
 opt.tabstop = 2
 opt.shiftwidth = 2
 opt.softtabstop = 2
